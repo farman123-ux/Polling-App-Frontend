@@ -1,8 +1,14 @@
 import axios from 'axios';
 
+const getBaseUrl = () => {
+  const url = import.meta.env.VITE_API_URL;
+  if (!url) return '/api';
+  return url.endsWith('/api') ? url : `${url}/api`;
+};
+
 // to create a single instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: getBaseUrl(),
 });
 
 // to attach jwt token to any request //check user logged in or not

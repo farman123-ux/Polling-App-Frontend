@@ -8,7 +8,7 @@ const getBaseUrl = () => {
   if (import.meta.env.DEV) {
     return 'http://localhost:5000/api';
   }
-  return 'https://polling-app-backend-sigma.vercel.app/api';
+  return 'https://polling-app-backend-six.vercel.app';
 };
 
 // to create a single instance

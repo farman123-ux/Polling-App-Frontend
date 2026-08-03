@@ -2,8 +2,13 @@ import axios from 'axios';
 
 const getBaseUrl = () => {
   const url = import.meta.env.VITE_API_URL;
-  if (!url) return '/api';
-  return url.endsWith('/api') ? url : `${url}/api`;
+  if (url) {
+    return url.endsWith('/api') ? url : `${url.replace(/\/$/, '')}/api`;
+  }
+  if (import.meta.env.DEV) {
+    return 'http://localhost:5000/api';
+  }
+  return 'https://polling-app-backend-sigma.vercel.app/api';
 };
 
 // to create a single instance
